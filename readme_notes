@@ -1,0 +1,38 @@
+1) I created and pushed docker image of django framework that says hello world and is pushed to your docker hub repo with name 
+docker pull praveenreddy544/docker_django:django_helloworld_app
+
+
+2) Below are your docker hub creds
+
+go to dockerhub and login using as
+
+praveenreddy544
+saritha369
+
+3) How to use this docker image to spinup services are below steps are:
+
+a) Install docker-ce on your centos and start docker service. AFter docker is isntalled, run docker images and after verification, and run below commands
+b) docker pull praveenreddy544/docker_django:django_helloworld_app
+c) verify docker image is pulled using command docker images
+d) start container using command docker run -p 8009:8009 -it 439803065902 python /code/manage.py runserver 0.0.0.0:8009
+e) now you can see port 8009 is publisehd to your local server and you can start using
+f) you can spin up docker service with  docker-compose using below config as
+
+[prav@slave1 pythondjango]$ cat docker-compose.yml
+version: '3.7'
+
+services:
+  web:
+    image: praveenreddy544/docker_django:django_helloworld_app
+    command: python /code/manage.py runserver 0.0.0.0:8009
+#    volumes: # used duirng initial image creation
+#      - .:/code # mount your local workspace into containers workspace
+    ports:
+      - 8009:8009
+
+g) run docker-compose up and this will directly spin up docker service and  you can start using that
+
+Note:- To install docker compose, use this link https://www.edureka.co/community/50699/how-do-i-install-docker-compose-on-linux to get that binary
+
+
+

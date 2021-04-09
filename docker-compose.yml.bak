@@ -4,7 +4,7 @@ services:
   web:
     build: .
     command: python /code/manage.py runserver 0.0.0.0:8009
-#    volumes: # used duirng initial image creation
-#      - .:/code # mount your local workspace into containers workspace
+    volumes:
+      - .:/code
     ports:
       - 8009:8009
